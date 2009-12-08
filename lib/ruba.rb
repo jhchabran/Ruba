@@ -1,2 +1,2 @@
-require 'ruba/snapshot'
 require 'ruba/bytes'
+require 'ruba/snapshot'

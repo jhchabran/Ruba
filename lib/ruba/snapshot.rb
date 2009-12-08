@@ -1,5 +1,5 @@
 class Snapshot
-  attr_accessor :path, :name, :size
+  attr_accessor :path, :name, :size, :litteral_size
   
   def initialize(opts={})
     opts.each do |k,v|
@@ -8,6 +8,11 @@ class Snapshot
   end
   
   def size=(amount)
-    
+    if amount.kind_of? String
+      @litteral_size = amount
+      @size = Bytes::Parser.read(amount)
+    else
+      @size = amount
+    end
   end
 end

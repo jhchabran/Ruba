@@ -3,7 +3,7 @@ class Job
   
   def initialize opts
     assigns_options opts
-    @output_file = output_path + '/' + extract_name(disk_path)
+    @output_file = output_path + '/' + extract_name(disk_path) + '.img'
   end
   
   def run
@@ -47,7 +47,7 @@ class Job
   end
   
   def extract_name(disk_path)
-    disk_path.match(/.*\/([^\/])+/)
+    disk_path.match(/.*\/([^\/]+)/)
     $1
   end
 end

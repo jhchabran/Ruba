@@ -6,7 +6,7 @@ describe Snapshot do
   end
   
   it "should create a snapshot ready to be applied" do
-    Snapshot.new(:size => "4G", :path => '/dev/vg00/pwet-disk', :name => 'pwet')
+    Snapshot.new(:size => "4G", :path => '/dev/vg00/pwet-disk', :name => 'pwet-backup')
   end
   
   it "should store sizes as bytes" do
@@ -15,7 +15,7 @@ describe Snapshot do
   
   describe "taking action" do
     before(:each) do
-      @snapshot = Snapshot.new(:size => "4G", :path => '/dev/vg00/pwet-disk', :name => 'pwet')
+      @snapshot = Snapshot.new(:size => "4G", :path => '/dev/vg00/pwet-disk', :name => 'pwet-backup')
       @observer << @snapshot
     end
     
@@ -52,7 +52,7 @@ describe Snapshot do
       end
       
       it "should specify a path " do
-        @cmd.should include('/dev/vg00/pwet-disk')
+        @cmd.should include('/dev/vg00/pwet-backup')
       end
     end
   end

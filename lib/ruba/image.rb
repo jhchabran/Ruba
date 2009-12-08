@@ -1,14 +1,14 @@
 class Image
   include Observable
   
-  attr_accessor :input, :output
+  attr_accessor :input_file, :output_file
   
   def initialize(opts={})
     assigns_options opts
   end
   
   def copy_cmd
-    "sudo dd if=#{input} of=#{output} bs=64k"
+    "sudo dd if=#{input_file} of=#{output_file} bs=64k"
   end
   
   def copy!

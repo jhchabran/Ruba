@@ -6,12 +6,12 @@ describe Image do
   end
   
   it "should create an Image ready to copy" do
-    Image.new(:input => '/dev/urandom', :output => '/tmp/image.iso')
+    Image.new(:input_file => '/dev/urandom', :output_file => '/tmp/image.iso')
   end
   
   describe "taking action" do
     before(:each) do
-      @image = Image.new(:input => '/dev/urandom', :output => '/tmp/image.iso')
+      @image = Image.new(:input_file => '/dev/urandom', :output_file => '/tmp/image.iso')
       @observer << @image
     end
     

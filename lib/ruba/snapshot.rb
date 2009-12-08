@@ -4,9 +4,7 @@ class Snapshot
   attr_accessor :path, :name, :size, :litteral_size
   
   def initialize(opts={})
-    opts.each do |k,v|
-      send("#{k}=",v)
-    end
+    assigns_options opts
   end
   
   def size=(amount)

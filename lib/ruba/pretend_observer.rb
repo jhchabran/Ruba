@@ -5,6 +5,6 @@ class PretendObserver < CommandObserver
   end
   
   def update cmd
-    @io.write cmd
+    @io.write(cmd + "\n")
   end
 end

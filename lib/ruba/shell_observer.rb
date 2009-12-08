@@ -1,0 +1,3 @@
+class ShellObserver < CommandObserver
+  
+end

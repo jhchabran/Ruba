@@ -1,4 +1,6 @@
 class Snapshot
+  include Observable
+  
   attr_accessor :path, :name, :size, :litteral_size
   
   def initialize(opts={})
@@ -14,5 +16,14 @@ class Snapshot
     else
       @size = amount
     end
+  end
+  
+  def cmd
+    "sudo lvcreate --snapshot --size #{litteral_size} --name #{name} #{path}"
+  end
+  
+  def take!
+    changed
+    notify_observers(cmd)
   end
 end

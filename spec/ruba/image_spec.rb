@@ -33,5 +33,20 @@ describe Image do
         @cmd.should include("of=/tmp/image.iso")
       end
     end
+    
+    describe "deleting" do
+      before(:each) do
+        @image.delete!
+        @cmd = @string_io.string
+      end
+      
+      it "should include the command dd" do
+        @cmd.should include("rm")
+      end
+      
+      it "should include the image file" do
+        @cmd.should include("/tmp/image.iso")
+      end
+    end
   end
 end

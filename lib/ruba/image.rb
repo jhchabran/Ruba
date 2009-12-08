@@ -11,8 +11,17 @@ class Image
     "sudo dd if=#{input_file} of=#{output_file} bs=64k"
   end
   
+  def delete_cmd
+    "sudo rm #{output_file}"
+  end
+  
   def copy!
     changed
     notify_observers(copy_cmd)
+  end
+  
+  def delete!
+    changed
+    notify_observers(delete_cmd)
   end
 end

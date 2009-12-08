@@ -1,6 +1,17 @@
 = ruba
 
-Description goes here.
+Use case, backuping my domUs with plain images and scp'ing them once a week elsewhere. 
+
+This started as a pretty simple script, but I got hooked and got plenty ideas about backups. It's still messy in my head, we'll see where it goes. 
+
+./ruba /dev/loldisk
+sudo lvcreate --snapshot --size 5G --name loldisk_backup /dev/loldisk
+sudo dd if=/dev/loldisk_backup of=/tmp/loldisk.img bs=64k
+sudo lolcat /tmp/loldisk.img /dev/ceiling_cat
+sudo rm /tmp/loldisk.img
+sudo lvremove /dev/loldisk_backup
+
+
 
 == Note on Patches/Pull Requests
  

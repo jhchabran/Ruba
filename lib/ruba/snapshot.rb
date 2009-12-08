@@ -18,12 +18,21 @@ class Snapshot
     end
   end
   
-  def cmd
+  def take_cmd
     "sudo lvcreate --snapshot --size #{litteral_size} --name #{name} #{path}"
+  end
+  
+  def remove_cmd
+    "sudo lvremove #{path}"
   end
   
   def take!
     changed
-    notify_observers(cmd)
+    notify_observers(take_cmd)
+  end
+  
+  def remove!
+    changed
+    notify_observers(remove_cmd)
   end
 end

@@ -1,0 +1,21 @@
+#!/usr/bin/ruby
+
+require File.expand_path(File.dirname(__FILE__)) + '/../lib/ruba'
+
+class Application
+  def run(disks)
+    @observer = PretendObserver.new($stdout)
+    @gateway  = CeilingCatGateway.new
+    
+    @jobs = []
+    
+    disks.each do |disk|
+      @jobs << Job.new(:observer => @observer, :gateway => @gateway, :output_path => '/tmp', :disk_path => disk)
+    end
+    
+    Secretary.new(@jobs).work
+  end
+end
+
+Application.new.run(ARGV)
+

@@ -16,8 +16,7 @@ class Job
   ensure
     destroy_snapshot
   end
-  
-  
+    
   private
   
   def make_image

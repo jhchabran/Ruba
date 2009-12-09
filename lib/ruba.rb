@@ -1,4 +1,5 @@
 require 'observer'
+require 'uri'
 
 $: << File.expand_path(File.dirname(__FILE__))
 

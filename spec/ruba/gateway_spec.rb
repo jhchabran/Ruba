@@ -11,12 +11,12 @@ describe "Gateways" do
   
   describe ScpGateway do
     it "should create a scp gateway" do
-      ScpGateway.new(:host => 'localhost')
+      ScpGateway.new("scp://lolcat@localhost/target")
     end
     
     describe "taking action" do
       before(:each) do
-        @scp_gateway = ScpGateway.new(:host => 'localhost', :port => '2222', :user => 'lolcat')
+        @scp_gateway = ScpGateway.new("scp://lolcat@localhost:2222/target")
         @observer << @scp_gateway
         
         @scp_gateway.warp! "cupcake"

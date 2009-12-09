@@ -3,7 +3,7 @@ class Job
   
   def initialize opts
     assigns_options opts
-    @output_file = output_path + '/' + extract_name(disk_path) + '.img'
+    @output_file = output_path + '/' + extract_name(disk_path) + '.img.bz2' # should not be handled here
     @observer << @gateway # TODO this line screams about something being wrong here
   end
   

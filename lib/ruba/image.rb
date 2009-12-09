@@ -8,16 +8,25 @@ class Image
   end
   
   def copy_cmd
-    "sudo dd if=#{input_file} of=#{output_file} bs=64k"
+    "sudo dd if=#{input_file} bs=64k | bzip2 > #{output_file}"
   end
   
   def delete_cmd
     "sudo rm #{output_file}"
   end
   
+  def compress_cmd
+    "sudo "
+  end
+  
   def copy!
     changed
     notify_observers(copy_cmd)
+  end
+  
+  def compress!
+    changed
+    notify_observers(compress_cmd)
   end
   
   def delete!

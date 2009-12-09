@@ -7,8 +7,10 @@ class CommandObserver
   end
   
   def << target
-    @targets << target
-    target.add_observer self
+    unless @targets.include? target
+      @targets << target 
+      target.add_observer self
+    end
     self
   end
   

@@ -4,6 +4,7 @@ class Job
   def initialize opts
     assigns_options opts
     @output_file = output_path + '/' + extract_name(disk_path) + '.img'
+    @observer << @gateway # TODO this line screams about something being wrong here
   end
   
   def run
@@ -20,7 +21,7 @@ class Job
   private
   
   def make_image
-    @image = Image.new(:input_file => disk_path, :output_file => @output_file )
+    @image = Image.new(:input_file => disk_path + '_backup', :output_file => @output_file )
     @observer << @image
     @image.copy!
   end
@@ -30,11 +31,11 @@ class Job
   end
   
   def transfer_image
-    @gateway.warp! output_path
+    @gateway.warp! @output_file
   end
   
   def spawn_snapshot
-    @snapshot = Snapshot.new(:size => "5G", :path => disk_path, :name => extract_name(disk_path))
+    @snapshot = Snapshot.new(:size => "5G", :path => disk_path, :name => extract_name(disk_path)+'_backup')
     @observer << @snapshot
   end
   

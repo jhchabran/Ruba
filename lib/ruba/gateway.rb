@@ -13,6 +13,6 @@ end
 
 class CeilingCatGateway < Gateway
   def cmd path
-    "echo 'MEOW #{path}'"
+    "sudo lolcat #{path} /dev/ceiling_cat"
   end
 end

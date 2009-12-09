@@ -12,6 +12,10 @@ sudo rm /tmp/loldisk.img
 sudo lvremove /dev/loldisk_backup
 
 
+== TODO 
+
+* lvcreate -L parameter takes MB as default unit whereas it's bytes here
+* think about crafting a framework with all of that
 
 == Note on Patches/Pull Requests
  
